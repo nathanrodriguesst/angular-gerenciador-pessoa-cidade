@@ -50,8 +50,8 @@ export class PessoaCreateComponent implements OnInit {
 
   findCep(event: any): void {    
     var cep = event.target.value;
-
-    if (cep.lenght >= 9) {
+    
+    if (cep.length >= 9) {
       this.enderecoService.getEndereco(cep).subscribe({
         next: (end) => {
             this.pessoaForm.patchValue({
