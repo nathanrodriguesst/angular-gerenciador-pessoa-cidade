@@ -1,0 +1,55 @@
+.btn-blue {
+  background-color: #3642B0 !important; 
+  color: white !important;
+} 
+
+.btn-blue:hover{
+  opacity: 0.8;
+}
+
+select {
+  border: 0.5px solid !important;
+  transition: border-color 0.5s ease-out !important;
+}
+
+input {
+  border: 2px solid;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin: 0.25rem;
+  min-width: 125px;
+  padding: 0.5rem;
+  transition: border-color 0.5s ease-out;
+}
+
+input:optional,
+input:required {
+  border-color: gray;
+}
+
+input:required:valid {
+  border-color: green;
+}
+
+input.ng-invalid.ng-touched,
+input.ng-invalid.ng-dirty {
+  border-color: red;
+}
+
+input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+
+html, body { 
+  height: 100%; 
+}
+
+body { 
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+}

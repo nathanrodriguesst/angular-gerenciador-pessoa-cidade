@@ -1,0 +1,60 @@
+<div class="container-fluid ms-4">
+  <h1 class="mb-5 mt-5">Cadastro de Cidade</h1>
+  <form [formGroup]="cidadeForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-5">
+            <label for="nome" class="form-label">Nome *</label>
+            <input id="nome" formControlName="nome" class="form-control" placeholder="Digite o nome da cidade" required>
+          </div>
+
+          <div class="col-lg-2">
+            <label for="ibge" class="form-label">Cód IBGE *</label>
+            <input id="ibge" formControlName="ibge" class="form-control" placeholder="Digite o código da cidade" required>
+          </div>
+  
+          <div class="col-lg-2">
+            <label for="categoryId" class="form-label">UF *</label>
+            <select id="uf" formControlName="uf" class="form-control" type="text" ngModel maxlength="2" placeholder="Digite a UF" required>
+              <option value selected disabled hidden>Selecione a UF</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espirito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+          </div>
+
+          <div class="col-lg-2 btns">
+            <button type="button" [routerLink]="['/']" class="btn btn-danger me-2">Cancelar</button>
+            <button type="submit" class="btn btn-blue">Cadastrar</button>
+          </div>
+          
+        </div> 
+      </div>
+    </div>
+  </form>
+</div>

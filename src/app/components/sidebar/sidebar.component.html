@@ -1,0 +1,36 @@
+<nav class="sidebar bg-light d-flex flex-column">
+  <img src="/assets/logo.png" alt="Logo" class="logo">
+  <ul class="nav  flex-column flex-grow-1">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/']"> <i class="fa-solid fa-house me-3"></i> Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#pessoaCollapse" role="button" aria-expanded="false" aria-controls="pessoaCollapse">
+        <i class="fa-solid fa-user-large me-3"></i> Pessoa
+      </a>
+      <div class="collapse" id="pessoaCollapse">
+        <li class="nav-item ms-3">
+          <a class="nav-link" [routerLink]="['/pessoa-create']">Cadastrar</a>
+        </li>     
+        <li class="nav-item ms-3">
+          <a class="nav-link" [routerLink]="['/pessoa-list']">Listar</a>
+        </li>    
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#cidadeCollapse" role="button" aria-expanded="false" aria-controls="cidadeCollapse">
+        <i class="fa-solid fa-city me-3"></i> Cidade
+      </a>
+      <div class="collapse" id="cidadeCollapse">
+        <li class="nav-item ms-3">
+          <a class="nav-link" [routerLink]="['/cidade-create']">Cadastrar</a>
+        </li>     
+        <li class="nav-item ms-3">
+          <a class="nav-link" [routerLink]="['/cidade-list']">Listar</a>
+        </li>
+      </div>
+    </li>
+  </ul>
+</nav>

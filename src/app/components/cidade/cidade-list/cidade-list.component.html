@@ -1,0 +1,56 @@
+<div class="container-fluid ms-4">
+  <h1 class="mb-5 mt-5">Listagem de Cidades</h1>
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-5">
+      <div class="col-lg-10">
+        <input class="form-control" formControlName="searchQuery" placeholder="Pesquisar por nome">
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-blue ms-3 me-2"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+  </form>
+  
+  <div class="col-lg-11">
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th style="width: 5%;"></th>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Cód IBGE</th>
+          <th>UF</th>
+          <th class="text-end">
+            <button [routerLink]="['/cidade-update', selectedCidadeId]" [disabled]="!selectedCidadeId" class="btn btn-warning ms-2">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+            <button class="btn btn-danger ms-2"
+              (click)="selectedCidadeId !== null && deleteCidade(selectedCidadeId)"
+              [disabled]="!selectedCidadeId">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="align-middle">
+        <tr *ngFor="let cidade of cidades">
+          <td>
+            <mat-checkbox [checked]="selectedCidadeId === cidade.id" 
+            (change)="selectCidade(cidade.id)">
+            </mat-checkbox>
+          </td>
+          <td>{{ cidade.id }}</td>
+          <td>{{ cidade.nome }}</td>
+          <td>{{ cidade.ibge }}</td>
+          <td>{{ cidade.uf }}</td>
+          <td class="text-end"></td>
+        </tr>
+      </tbody>
+      <tfoot *ngIf="!cidades || !cidades.length">
+        <tr class="text-center">
+          <td colspan="12">Nenhum registro!</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
