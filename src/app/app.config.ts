@@ -7,6 +7,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideNgxMask } from 'ngx-mask';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { CustomPaginator } from './components/page-utils/custom-paginator/custom-paginator.component';  // Adjust the path if needed
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +21,9 @@ export const appConfig: ApplicationConfig = {
       timeOut: 3000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
-      closeButton: true}), provideAnimationsAsync(),
+      closeButton: true
+    }), 
+    provideAnimationsAsync(),
+    { provide: MatPaginatorIntl, useFactory: CustomPaginator }
   ]
 };

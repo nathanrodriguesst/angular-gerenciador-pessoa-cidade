@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environment/environment';
 import { HttpClient } from '@angular/common/http';
-import { Cidade } from '../models/cidade/cidade.model';
+import { Cidade, PageableResponse } from '../models/cidade/cidade.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,15 +24,15 @@ export class CidadeService {
     return this.http.delete<Cidade>(`${this.apiUrl}/delete/${id}`);         
   }
 
-  getAll() {
-    return this.http.get<Cidade[]>(`${this.apiUrl}/all`);
-  }
-
   getById(id: number) {
     return this.http.get<Cidade>(`${this.apiUrl}/id/${id}`);
   }
 
-  getByNome(query: string) {
-    return this.http.get<Cidade[]>(`${this.apiUrl}/search`, { params: { query } });
+  getAll() {
+    return this.http.get<Cidade[]>(`${this.apiUrl}/all`);
+  }
+
+  searchCidade(query: string, page: number, size: number): Observable<PageableResponse<Cidade>> {
+    return this.http.get<PageableResponse<Cidade>>(`${this.apiUrl}/search`, { params: { query, page, size } });
   }
 }

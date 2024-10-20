@@ -7,6 +7,8 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { PageableResponse } from '../../../models/cidade/cidade.model';
 
 @Component({
   selector: 'app-pessoa-list',
@@ -18,7 +20,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
     NgxMaskPipe,
     MatCheckbox,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   templateUrl: './pessoa-list.component.html',
   styleUrl: './pessoa-list.component.css'
@@ -27,6 +30,9 @@ export class PessoaListComponent implements OnInit {
   searchForm: FormGroup;
   pessoas: Pessoa[] = [];
   selectedPessoaId: number | null = null;
+  pageSize: number = 5;
+  currentPage: number = 0;
+  totalElements: number = 0;
 
   constructor(
     private fb: FormBuilder,
@@ -39,20 +45,29 @@ export class PessoaListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchPessoas();
+    this.fetchPessoas(this.currentPage);
   }
 
-  fetchPessoas(): void {
-    this.pessoaService.getAll().subscribe(pessoas => {
-      this.pessoas = pessoas;
+  fetchPessoas(currentPage: number): void {
+    this.pessoaService.getAllPageable(currentPage, this.pageSize).subscribe((data: PageableResponse<Pessoa>) => {
+      this.pessoas = data.content;
+      this.currentPage = data.number;
+      this.totalElements = data.totalElements;
+      this.currentPage = data.number;
     })
+  }
+
+  pageChanged(event: PageEvent) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.fetchPessoas(this.currentPage)
   }
 
   deletePessoa(id: number): void {
     if (confirm('Tem certeza que deseja deletar essa pessoa?')) {
       this.pessoaService.deletePessoa(id).subscribe({
         next: () => {
-          this.fetchPessoas();
+          this.fetchPessoas(this.currentPage);
           this.toastr.success('Pessoa deletada com sucesso.', 'Sucesso!')
         }, 
         error: () => {
@@ -70,7 +85,7 @@ export class PessoaListComponent implements OnInit {
     const searchQuery = this.searchForm.value.searchQuery;
 
     if (searchQuery == "") {
-      this.fetchPessoas();
+      this.fetchPessoas(this.currentPage);
     } else {
       this.pessoaService.searchPessoa(searchQuery).subscribe(pessoas => {
         this.pessoas = pessoas;
