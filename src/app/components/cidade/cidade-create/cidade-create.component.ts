@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CidadeService } from '../../../services/cidade.service';
+import { CidadeService } from '../../../services/cidade/cidade.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, RouterModule } from '@angular/router';
 

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Pessoa } from '../../../models/pessoa/pessoa.model';
-import { PessoaService } from '../../../services/pessoa.service';
+import { PessoaService } from '../../../services/pessoa/pessoa.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
 import { MatCheckbox } from '@angular/material/checkbox';

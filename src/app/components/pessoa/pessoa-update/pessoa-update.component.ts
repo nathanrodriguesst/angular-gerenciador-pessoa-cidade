@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
-import { PessoaService } from '../../../services/pessoa.service';
+import { PessoaService } from '../../../services/pessoa/pessoa.service';
 import { ToastrService } from 'ngx-toastr';
-import { CidadeService } from '../../../services/cidade.service';
+import { CidadeService } from '../../../services/cidade/cidade.service';
 import { Cidade } from '../../../models/cidade/cidade.model';
 import { NgxMaskDirective } from 'ngx-mask';
-import { EnderecoService } from '../../../services/endereco.service';
+import { EnderecoService } from '../../../services/endereco/endereco.service';
 
 @Component({
   selector: 'app-pessoa-update',

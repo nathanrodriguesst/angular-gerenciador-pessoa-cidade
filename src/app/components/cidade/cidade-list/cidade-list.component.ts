@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Cidade, PageableResponse } from '../../../models/cidade/cidade.model';
-import { CidadeService } from '../../../services/cidade.service';
+import { CidadeService } from '../../../services/cidade/cidade.service';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';

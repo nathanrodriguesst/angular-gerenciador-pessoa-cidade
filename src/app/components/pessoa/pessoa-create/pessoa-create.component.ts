@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Cidade } from '../../../models/cidade/cidade.model';
-import { PessoaService } from '../../../services/pessoa.service';
-import { CidadeService } from '../../../services/cidade.service';
+import { PessoaService } from '../../../services/pessoa/pessoa.service';
+import { CidadeService } from '../../../services/cidade/cidade.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxMaskDirective } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { EnderecoService } from '../../../services/endereco.service';
+import { EnderecoService } from '../../../services/endereco/endereco.service';
 import { Endereco } from '../../../models/endereco/endereco.model';
 
 @Component({
